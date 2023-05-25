@@ -29,7 +29,4 @@ npm start
 ```
 6. Navigate to browser and open https://localhost:8000
 
-# Deployment
-
-For quicker use you can access the deployed site: https://career-camp-jkir.onrender.com/ 
 
