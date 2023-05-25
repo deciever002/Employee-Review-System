@@ -20,6 +20,7 @@ npm install
 ``` javascript
 CONNECTION_STRING = "your_mongodb_connection_string"
 SESSION_SECRET = "your_secret"
+PORT = 8000 //whichever port you wish to run the application
 ```
 
 5.After Installing all the dependent modules. You can run the following command to run the project
