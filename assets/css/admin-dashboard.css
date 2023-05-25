@@ -1,0 +1,52 @@
+.wrapper{
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.gradient-custom-2 {
+    background: linear-gradient(to right, #5ceb24, #60d81a, #0fc937, #158007);
+}
+
+
+.card{
+    border-radius: 5%;
+    border: 1px solid black;
+    width: 15em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7.5em;
+}
+
+section{
+    border: 1px solid rgb(209, 205, 205);
+    padding: 1.5em;
+    border-radius: 2em;
+    box-shadow: 1em 1em 0.1em gray;
+    transition: transform 1s ease-in-out;
+}
+
+section:hover{
+    transform: translateX(1em) translateY(1em);
+}
+
+.clickable-card{
+    color: white;
+}
+
+.clickable-card:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.text-white{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+}

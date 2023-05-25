@@ -1,0 +1,163 @@
+<style>
+  datalist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin: 0;
+}
+</style>
+<h1 class="text-center">
+    <i class="fa-solid fa-pen-to-square"></i> View Performance Review
+  </h1>
+  <% if(locals.performanceReviews && locals.performanceReviews.length <= 0) { %>
+  <div class="d-flex justify-content-center card p-5 m-5">
+    <div class="card-title">There are no performance reviews to view....</div>
+  </div>
+  <% } else { %>
+    <% if(!isSelected) { %>
+<div class="container">
+  <div class="d-flex justify-content-center card p-5 m-5">
+    <form action="/user/view-review" method="post">
+        <div class="form-outline mb-4">
+        <label for="id" class="form-label">
+          Select Performance Review of Employee to be viewed
+      </label>
+        <select class="form-control" name="id" id="id">
+          <% for(let performanceReview of locals.performanceReviews) { %>
+          <option value="<%= performanceReview._id %>">
+              <%= performanceReview.reviewFor.name %> <%= performanceReview.reviewFor.role %>
+          </option>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-outline mb-4">
+        <input
+          type="submit"
+          class="btn btn-outline-success form-control"
+          value="Fetch"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+  <% } else { %>
+  <div class="container">
+    <div class="row d-flex justify-content-center m-5">
+      <div class="card p-5">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="review-for">Review For:</label>
+            <input
+              type="text"
+              id="reviewFor"
+              class="form-control"
+              value="<%= performanceReview.reviewFor.name %>"
+              disabled
+            />
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="rating">Rating</label>
+            <input
+              type="range"
+              class="form-control-range"
+              id="rating"
+              name="rating"
+              min="1"
+              max="5"
+              value="<%= performanceReview.rating %>"
+              list="ratings"
+              disabled
+            />
+            <datalist id="ratings">
+              <option value="1" label="1"></option>
+              <option value="2" label="2"></option>
+              <option value="3" label="3"></option>
+              <option value="4" label="4"></option>
+              <option value="5" label="5"></option>
+            </datalist>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="strengths">Strengths</label>
+            <textarea
+              id="strengths"
+              class="form-control"
+              disabled
+            ><%= performanceReview.strengths %></textarea>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="weaknesses">Weaknesses</label>
+            <textarea
+              id="weaknesses"
+              class="form-control"
+              disabled
+            ><%= performanceReview.weaknesses %></textarea>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="review">Review (Comments): </label>
+            <textarea
+              id="review"
+              class="form-control"
+              disabled
+            ><%= performanceReview.review %></textarea>
+          </div>
+      </div>
+    </div>
+  </div>
+  <% if(locals.performanceReview.feedbacks.length > 0) { %>
+    <h1 class="text-center">
+      <i class="fa-solid fa-pen-to-square"></i> Feedbacks
+    </h1>
+    <% for(let feedback of performanceReview.feedbacks) { %>
+      <div class="container d-flex flex-column mb-3">
+      <div class="card mb-5">
+        <h3 class="text-center"> Feedback From: <%= feedback.feedbackFrom.name %> </h3>
+        <div class="row d-flex justify-content-center m-5">
+              <div class="form-outline mb-4">
+                <label class="form-label" for="strengths">Strengths</label>
+                <textarea
+                  id="strengths"
+                  class="form-control"
+                  disabled
+                ><%= feedback.strengths %></textarea>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" for="weaknesses">Weaknesses</label>
+                <textarea
+                  id="weaknesses"
+                  class="form-control"
+                  disabled
+                ><%= feedback.weaknesses %></textarea>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" for="review">Review (Comments): </label>
+                <textarea
+                  id="review"
+                  class="form-control"
+                  disabled
+                ><%= feedback.review %></textarea>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" for="date">Feedback Added on: </label>
+                <input
+                  type="datetime"
+                  class="form-control"
+                  disabled
+                  value="<%= feedback.createdAt %>"
+                />
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  <% } %>
+  <% } %> <% } %>
+  

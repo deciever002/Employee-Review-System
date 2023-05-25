@@ -1,0 +1,60 @@
+<h1 class="text-center"><i class="fa-solid fa-pen-to-square"></i> Update User</h1>
+<% if(locals.users && locals.users.length <= 0) { %>
+  <div class="d-flex justify-content-center card p-5 m-5">
+    <div class="card-title">There are no users to update.....</div>
+  </div>
+<% } else{ %>
+  <% if(!isUserFetched) { %>
+  <div class="container">
+    <div class="row d-flex justify-content-center card p-5 m-5">
+        <form action="/admin/update-user" method="post">
+          <div class="form-outline mb-4">
+            <label for="id" class="form-label">Select User to be updated</label>
+            <select class="form-control" name="id" id="id">
+              <% for(let user of locals.users) { %>
+                <option value=<%= user._id %>><%= user.name%> <%= user.role %></option>
+              <% } %>
+            </select>
+        </div>
+          <div class="form-outline mb-4">
+            <input type="submit" class=" btn btn-outline-success form-control" value="Fetch" />
+          </div>
+        </form>
+    </div>
+  </div>
+  <% } else { %>
+    <% console.log(typeof user.name) %>
+  <div class="container">
+      <div class="row d-flex justify-content-center m-5">
+          <div class="card p-5">
+              <form action="/user/update-user" method="post">
+                  <div class="form-outline mb-4">
+                      <label class="form-label" for="name">Update Name</label>
+                      <input type="text" id="name" name="name" class="form-control" value="<%= user.name %>" />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="email">Update Email</label>
+                      <input type="email" name="email" id="email" class="form-control"
+                      value=<%= user.email %> />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="password">Update Password</label>
+                      <input type="password" id="password" name="password" class="form-control" value="<%= user.password %>"/>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label for="Role" class="form-label">Update Role</label>
+                      <select class="form-control" name="role" id="role">
+                        <option value="<%= user.role %>" selected><%= user.role %></option>
+                        <option value=<%= user.role == "admin" ? 'employee' : 'admin' %>> <%= user.role == "admin" ? 'Employee' : 'Admin' %> </option>
+                      </select>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input type="submit" class=" btn btn-outline-success form-control" value="Update" />
+                    </div>
+                    <input type="text" hidden name="id" value = <%= user._id %>>
+              </form>
+          </div>
+      </div>
+  </div>
+  <% } %>
+<% } %>

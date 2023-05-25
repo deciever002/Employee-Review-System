@@ -1,0 +1,99 @@
+<style>
+    datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+  }
+  
+  option {
+    padding: 0;
+  }
+  
+  input[type="range"] {
+    width: 200px;
+    margin: 0;
+  }
+  </style>
+  <h1 class="text-center">
+    <i class="fa-solid fa-pen-to-square"></i> Submit Feedback
+  </h1>
+  <% if(locals.feedbacks && locals.feedbacks.length <= 0) { %>
+  <div class="d-flex justify-content-center card p-5 m-5">
+    <div class="card-title">There are no feedback assigned to you or You have submitted all your feedbacks........</div>
+  </div>
+  <% } else { %>
+  <% if(!isSelected) { %>
+    <div class="container">
+      <div class="d-flex justify-content-center card p-5 m-5">
+        <form action="/employee/add-feedback" method="post">
+            <div class="form-outline mb-4">
+            <label for="id" class="form-label">
+              Select from the feedbacks assigned to you
+            </label>
+            <select class="form-control" name="feedbackForPR" id="id">
+              <% for(let feedback of locals.feedbacks) { %>
+              <option value="<%= feedback._id %>">
+                  <%= feedback.reviewFor.name %> <%= feedback.reviewFor.role %>
+              </option>
+              <% } %>
+            </select>
+          </div>
+          <div class="form-outline mb-4">
+            <input
+              type="submit"
+              class="btn btn-outline-success form-control"
+              value="Add Feedback"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  <% } else { %>
+  <div class="container">
+    <div class="row d-flex justify-content-center m-5">
+      <div class="card p-5">
+        <form action="/employee/submit-feedback" method="post">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="review-for">Add Feedback to Review of:</label>
+            <input type="text" value="<%= performanceReview.reviewFor.name %> <%= performanceReview.reviewFor.role %>" disabled/>
+            <input type="text" name="reviewFor" value="<%= performanceReview.reviewFor._id %>" hidden>
+            <input type="text" name="prId" value="<%= performanceReview._id %>" hidden> 
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="strengths">Strengths</label>
+            <textarea
+              name="strengths"
+              id="strengths"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="weaknesses">Weaknesses</label>
+            <textarea
+              name="weaknesses"
+              id="weaknesses"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="review">Review (Comments): </label>
+            <textarea
+              name="review"
+              id="review"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-outline mb-4">
+            <input
+              type="submit"
+              class="btn btn-outline-success form-control"
+              value="Submit Feedback"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <% } %> <% } %>
+  

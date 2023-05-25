@@ -1,0 +1,43 @@
+<h1 class="text-center">
+    <i class="fa-solid fa-pen-to-square"></i> Assign Performance Review for Feedback
+</h1>
+<% if(locals.performanceReviews && locals.performanceReviews.length <= 0) { %>
+    <div class="d-flex justify-content-center card p-5 m-5">
+      <div class="card-title">There are no performance reviews to assign....s</div>
+    </div>
+<% } else { %>
+  <div class="container">
+    <div class="d-flex justify-content-center card p-5 m-5">
+      <form action="/user/assign-review" method="post">
+        <div class="form-outline mb-4">
+        <label for="id" class="form-label"
+          >Select Performance Review of Employee to be assigned for feedback</label
+        >
+        <select class="form-control" name="prId" id="id">
+          <% for(let performanceReview of locals.performanceReviews) { %>
+          <option value="<%= performanceReview._id %>"
+            ><%= performanceReview.reviewFor.name %> 
+            <%= performanceReview.reviewFor.role %>
+          </option>
+          <% } %>
+        </select>
+        </div>
+        <div class="form-outline mb-4">
+        <label for="feedbackFrom" class="form-label">Add FeedBack From:</label>
+        <select class="form-control" name="feedbackFrom" id="feedbackFrom">
+          <% for(let user of locals.users) { %>
+            <option value="<%= user._id %>"><%= user.name %> <%= user.role %></option>
+          <% } %>
+        </select>
+        </div>
+        <div class="form-outline mb-4">
+          <input
+            type="submit"
+            class="btn btn-outline-success form-control"
+            value="Assign"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+<% } %>

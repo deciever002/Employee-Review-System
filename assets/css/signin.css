@@ -1,0 +1,9 @@
+.gradient-custom-2 {
+    background: linear-gradient(to right, #5ceb24, #60d81a, #0fc937, #158007);
+}
+    
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}

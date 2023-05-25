@@ -1,0 +1,30 @@
+<h1 class="text-center">
+  <i class="fa-sharp fa-solid fa-trash"></i> Delete User
+</h1>
+<% if(locals.users && locals.users.length <= 0) { %>
+<div class="d-flex justify-content-center card p-5 m-5">
+  <div class="card-title">There are no users to delete.....</div>
+</div>
+<% } else { %>
+<div class="container">
+  <div class="d-flex justify-content-center card p-5 m-5">
+    <form action="/user/delete" method="post">
+      <div class="form-outline mb-4">
+        <label for="id" class="form-label">Select User to be updated</label>
+        <select class="form-control" name="id" id="id">
+          <% for(let user of locals.users) { %>
+          <option value=<%= user._id %>><%= user.name%> <%= user.role %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-outline mb-4">
+        <input
+          type="submit"
+          class="btn btn-outline-danger form-control"
+          value="Delete"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+<% } %>

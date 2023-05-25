@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/signin.css">
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img src="/images/logo.jpg"
+                    style="width: 185px;" alt="logo">
+                  <h4 class="mt-1 mb-5 pb-1">Sign In</h4>
+                </div>
+                <form method="post" action="/user/create-session">
+                  <p>Please login to your account</p>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control"
+                      placeholder="Email" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 mr-2">Don't have an account?</p>
+                    <a href="/signup" type="button" class="btn btn-outline-success">Create new</a>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="submit" class=" btn btn-outline-success form-control" value="Sign In" />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">Employee Review System</h4>
+                <p class="small mb-0">It lets you add reviews as an admin and then employees can rate or give feedback towards each other</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

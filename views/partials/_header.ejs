@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/header.css">
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/">
+      <img
+      src="/images/logo.jpg"
+      width="50"
+      height="50"
+      alt="logo"
+    />
+    ERS
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <% if(locals.user) { %>
+      <% if(locals.user.role == 'admin') { %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" id="signin" href="/admin/dashboard">Admin Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="logout" href="/user/destroy-session">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <% } else { %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" id="signin" href="/employee/dashboard">Employee Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="logout" href="/user/destroy-session">Logout</a>
+            </li>
+          </ul>
+        </div>
+      <% } %>
+    <% } else { %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" id="signin" href="/signin">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="signup" href="/signup">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    <% } %>
+  </nav>
+</header>
+
+<script>
+  
+</script>

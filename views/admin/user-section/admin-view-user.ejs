@@ -1,0 +1,49 @@
+<h1 class="text-center"><i class="fa-sharp fa-solid fa-eye"></i> View User</h1>
+<% if(locals.users && locals.users.length <= 0) { %>
+  <div class="d-flex justify-content-center card p-5 m-5">
+    <div class="card-title">There are no users to view....s</div>
+  </div>
+<% } else { %>
+  <% if(!isSelected) { %>
+  <div class="container">
+    <div class="d-flex justify-content-center card p-5 m-5">
+          <form action="/user/fetch" method="post">
+            <div class="form-outline mb-4">
+              <label for="id" class="form-label">Select User to be viewed</label>
+              <select class="form-control" name="id" id="id">
+                <% for(user of locals.users) { %>
+                  <option value="<%= user._id %>"><%= user.name%> <%= user.role %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="form-outline mb-4">
+              <input type="submit" class=" btn btn-outline-success form-control" value="Fetch" />
+            </div>
+          </form>
+    </div>
+  </div>
+  <% } else { %>
+    <% console.log(user) %>
+  <div class="container">
+      <div class="row d-flex justify-content-center m-5">
+          <div class="card p-5">
+            <div class="form-outline mb-4">
+                <label class="form-label" for="name">Name</label>
+                <input type="text" id="name" class="form-control" value="<%= user.name %>" disabled/>
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" class="form-control"
+                value="<%= user.email %>" disabled />
+            </div>
+            <div class="form-outline mb-4">
+                <label for="Role" class="form-label">Role</label>
+                <select class="form-control" name="role" id="role" disabled>
+                  <option value="<%= user.role %>" selected><%= user.role %></option>
+                </select>
+            </div>
+          </div>
+      </div>
+  </div>
+  <% } %>
+<% } %>
