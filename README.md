@@ -1,8 +1,9 @@
 # Employee-Review-System
+Summary:
 An application that allows employees to submit feedback toward each other’s performance. 
-Admin can add/view/update/delete an employee
-Admin can also add/view/update performance reviews.
-Admin can also assign Performance review to other employees to submit feedback toward's each other
+1.Admin can add/view/update/delete an employee
+2.Admin can also add/view/update performance reviews.
+3.Admin can also assign Performance review to other employees to submit feedback toward's each other
 
 # Quick Start
 1. Install all the dependent modules in package.json using:
