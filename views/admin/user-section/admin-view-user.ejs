@@ -23,23 +23,22 @@
     </div>
   </div>
   <% } else { %>
-    <% console.log(user) %>
   <div class="container">
       <div class="row d-flex justify-content-center m-5">
           <div class="card p-5">
             <div class="form-outline mb-4">
                 <label class="form-label" for="name">Name</label>
-                <input type="text" id="name" class="form-control" value="<%= user.name %>" disabled/>
+                <input type="text" id="name" class="form-control" value="<%= selectedUser.name %>" disabled/>
             </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="email">Email</label>
                 <input type="email" id="email" class="form-control"
-                value="<%= user.email %>" disabled />
+                value="<%= selectedUser.email %>" disabled />
             </div>
             <div class="form-outline mb-4">
                 <label for="Role" class="form-label">Role</label>
                 <select class="form-control" name="role" id="role" disabled>
-                  <option value="<%= user.role %>" selected><%= user.role %></option>
+                  <option value="<%= selectedUser.role %>" selected><%= selectedUser.role %></option>
                 </select>
             </div>
           </div>

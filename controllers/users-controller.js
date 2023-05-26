@@ -18,7 +18,11 @@ module.exports.create = async function(req,res){
         //if the user already exist redirect it to sign in page
         if(user){
             req.flash('error', 'User Already Exists');
-            return res.redirect('/signin');
+            if(!req.isAuthenticated()){
+                return res.redirect('/signin');
+            }else{
+                return res.redirect('back');
+            }        
         }
 
         //create hash for password
@@ -142,12 +146,12 @@ module.exports.viewUser = async function(req,res){
         const { id } = req.body;
 
         //fetch the user with the id
-        const user = await User.findById(id);
+        const selectedUser = await User.findById(id);
 
         //display the user which is selected
         return res.render('./admin/user-section/admin-view-user',{
             title: "View User",
-            user,
+            selectedUser,
             isSelected: true
         });
 
