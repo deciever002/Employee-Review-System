@@ -2,6 +2,15 @@
 
 Welcome to the documentation for the **Employee Review System**, an application that enables employees to provide feedback on each other's performance. This documentation will guide you through the various features and functionalities of the application.
 
+Live at : https://employee-review-system-78xa.onrender.com/
+
+Snapshots: 
+
+<img width="1440" alt="Screenshot 2023-08-22 at 4 47 35 PM" src="https://github.com/deciever002/Employee-Review-System/assets/112121338/c2ab5408-4d1a-4627-883f-cdc2ca7b6a7d">
+<img width="1440" alt="Screenshot 2023-08-22 at 4 47 52 PM" src="https://github.com/deciever002/Employee-Review-System/assets/112121338/18003c45-70ce-4f64-84de-645685396b97">
+<img width="1440" alt="Screenshot 2023-08-22 at 4 48 04 PM" src="https://github.com/deciever002/Employee-Review-System/assets/112121338/a99312a2-dc98-4440-b096-691bf8eace8b">
+
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
